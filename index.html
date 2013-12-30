@@ -66,7 +66,7 @@ int main(int agrc, char *argv[])
   while (1) // dummy infinite loop
   {
     epocutils::handleEvents(connected, epoc_state, eEvent, eState, userID, myEpocHeadset);
-    if ( cartman.newDataToRead )
+    if ( myEpocHeadset.newDataToRead )
     {
       // ( ... )
       myEpocHeadset.newDataToRead = false;
