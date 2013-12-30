@@ -1,0 +1,17 @@
+# first compilation - everything ( '<iostream>' & all EMotiv's stuff ) included in the 'epocutils.h' file, & 2 dummy fcns in the 'epocutils.cpp' file, compiles file when linked against as follows:
+g++ -o epoctest.out main.cpp epocutils.h epocutils.cpp edk.h edkErrorCode.h EmoStateDLL.h -L.-ledk -L.-ledk_utils_linux
+# the 2 '-L.' before the '-l*' are to indicate the current directory ;p
+
+# after 'some troubles', mainly due to the fact that I'm getting tired ( it's actually 04:41 in the morning by now ...), how to overcome possible duties:
+
+# 1: to get rid of the '-L.', i made symlinks to the Emotiv libraries:
+sudo ln -sf /home/stephaneag/REPLICATA_EmotivDeveloper_1.0.0.5/lib/libedk.so /usr/lib/libedk.so
+sudo ln -sf /home/stephaneag/REPLICATA_EmotivDeveloper_1.0.0.5/lib/libedk_utils_linux.so /usr/lib/libedk_utils_linux.so
+
+# 2: then, we can compile normally & hope it will run flawlessly:
+g++ -Wall -o epoctest.out main.cpp epocutils.hpp epocutils.cpp edk.h edkErrorCode.h EmoStateDLL.h -ledk -ledk_utils_linux
+
+# 3: to run:
+./epoctest.out
+# -> neat ! it works fine ;)
+# ==> now go have a deserved rest & then code that 'EpocHeadset' struct [ and a wrapper 'Epoc' class while at it ? ... ], and try to build a shared library out of your working crap ! ;D 
